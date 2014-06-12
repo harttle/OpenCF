@@ -1,3 +1,7 @@
+=======
+openCF
+======
+
 Here is an implementation of collaborative filtering system, which is the most popular algorithm for recommender systems.
 
 OpenCF implemented both user-based CF and item-based CF, and optimizing methods like:
@@ -108,3 +112,4 @@ evaluate/sort_prediction.sh data/uip.ii
 # evaluate sorted-prediction-file data/uip.ii.ui
 evaluate/evaluate -p data/uip.ii.ui -t data/test.ui -o data/ii.curve
 ```
+
