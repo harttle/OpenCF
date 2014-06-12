@@ -1,8 +1,10 @@
 =======
-openCF
+OpenCF
 ======
 
 Here is an implementation of collaborative filtering system, which is the most popular algorithm for recommender systems.
+
+More information can be obtained from the slider: report/OpenCF-report.pdf
 
 OpenCF implemented both user-based CF and item-based CF, and optimizing methods like:
 
