@@ -164,7 +164,7 @@
 \end{enumerate}
 
 \begin{equation}
-P_{u,i} = \sum_{Rank(s_{u,v})>k}s_{u,v} \cdot R_{v,i}
+P_{u,i} = \sum_{Rank(s_{u,v})\geq k}s_{u,v} \cdot R_{v,i}
 \end{equation}
 
 \end{frame}
@@ -192,7 +192,7 @@ P_{u,i} = \sum_{Rank(s_{u,v})>k}s_{u,v} \cdot R_{v,i}
 \end{enumerate}
 
 \begin{equation}
-P_{u,i} = \sum_{Rank(s_{i,j})>k}s_{i,j} \cdot R_{u,j}
+P_{u,i} = \sum_{Rank(s_{i,j})\geq k}s_{i,j} \cdot R_{u,j}
 \end{equation}
 
 \end{frame}
@@ -375,7 +375,7 @@ sim(i,j) = \frac{\sum_{u \in U}(R_{u,i} - \overline{R_i})(R_{u,j} - \overline{R_
 As mentioned above, $P_{u,i}$ is computed by summing the similarities between item $i$ and items in user $u$'s basket:
 
 \begin{equation}
-P_{u,i} = \sum_{Rank(s_{i,j})>k} s_{i,j} \cdot R_{u,j}
+P_{u,i} = \sum_{Rank(s_{i,j})\geq k} s_{i,j} \cdot R_{u,j}
 \end{equation}
 
 \begin{block}{Better summing method?}
@@ -384,7 +384,7 @@ P_{u,i} = \sum_{Rank(s_{i,j})>k} s_{i,j} \cdot R_{u,j}
 \item Only when all recommendation fails, $R_{u,i} = 0$. Thus:
 
 \begin{equation}
-P_{u,i} = 1 - \prod_{Rank(s_{i,j})>k} (1 - s_{i,j} \cdot R_{u,j})
+P_{u,i} = 1 - \prod_{Rank(s_{i,j})\geq k} (1 - s_{i,j} \cdot R_{u,j})
 \end{equation}
 \end{itemize}
 \end{block}
@@ -397,7 +397,7 @@ P_{u,i} = 1 - \prod_{Rank(s_{i,j})>k} (1 - s_{i,j} \cdot R_{u,j})
 Yet our summing method don't take into account the difference in density of the $k$ neighbors.
 
 \begin{equation}
-P_{u,i} = \sum_{Rank(s_{i,j})>k} s_{i,j} \cdot R_{u,j}
+P_{u,i} = \sum_{Rank(s_{i,j})\geq k} s_{i,j} \cdot R_{u,j}
 \end{equation}
 
 We can normalize the k similarities so that they add-up to 1.
@@ -426,13 +426,13 @@ For users who purchases a lot, each item reflects his appetite less. We'll norma
     \tau_i \approx \frac{\sum_{u \in U, R_{u,i}=1} R_{u,i}}{\sum_{u \in U, R_{u,i}=1}1 \cdot TimeSpan}
     \end{equation}
 
-\item Thus the modified $R_{u,i}$ will be:
+\item Thus the modified $P_{u,i}$ will be:
 
     \begin{equation}
-        R'_{u,i} = \left\{ 
+        P'_{u,i} = \left\{ 
         \begin{array}{l l}
-        R_{u,i} & \quad \text{if $R_{u,i} \neq 1$ }\\
-        \frac{Timespan_{prediction}}{\tau_i} \cdot R_{u,i} & \quad \text{otherwise}
+        P_{u,i} & \quad \text{if $R_{u,i} \neq 1$ }\\
+        \frac{Timespan_{prediction}}{\tau_i} \cdot P_{u,i} & \quad \text{otherwise}
         \end{array} \right.
     \end{equation}
 
